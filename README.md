@@ -13,8 +13,10 @@ Example:
     <?php
     include_once('CommentMan.php');
 
-    $comments_db = new CommentMan('../comments.db', true);
+    // Start a connection with the database
+    $comments_db = new CommentMan('comments.db', true);
 
+    // Create first comment
     $ca = new Comment();
     $ca->parent_id = 0;
     $ca->post_id = 2;
@@ -22,6 +24,7 @@ Example:
     $ca->username = 'Somebody';
     $ca->message = 'First message';
 
+    // Create second comment
     $cb = new Comment();
     $cb->parent_id = 1;
     $cb->post_id = 2;
@@ -29,14 +32,15 @@ Example:
     $cb->username = 'Somebody Else';
     $cb->message = 'Reply to first message';
 
+    // Add the comments to the database
     $comments_db->add($ca);
     $comments_db->add($cb);
 
-    // Get the tree thread array
+    // Get the tree-like thread array
     $thread = $comments_db->fetch_thread($post_id=0);
     print_r($thread);
 ```
 
 
-2020; J. A. Corbal
+Copyright (c) 2020, J. A. Corbal
 
