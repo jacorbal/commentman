@@ -64,7 +64,7 @@ include_once('Comment.php');
 class CommentMan extends SQLite3 {
     /**
      * @brief Default constructor.
-     *        Starts a new database connection
+     *        Start a new database connection
      *
      * @param database    Path to the database
      * @param create_file Create the file (if possible) if it doesn't exist
@@ -100,7 +100,7 @@ class CommentMan extends SQLite3 {
 
     /**
      * @brief Default destructor.
-     *        Closes the database connection
+     *        Close database connection
      */
     public function __destruct() {
         $this->close();
@@ -139,7 +139,7 @@ EOQ;
 
 
     /**
-     * @brief Create a new structure if database is empty
+     * @brief Create a new structure for the database
      *
      * @return @c true if successfully created, or otherwise
      */
@@ -373,7 +373,7 @@ EOQ;
                     $comment_arr['children'] = $children;
                 }
                 $thread[$comment_arr['id']] = $comment_arr;
-                unset($comment);
+                unset($comment_arr);
             }
         }
 
