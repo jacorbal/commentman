@@ -16,28 +16,33 @@ Example:
     // Start a connection with the database
     $comments_db = new CommentMan('comments.db', true);
 
+    // Post identifier
+    $post_id = 2;
+
     // Create first comment
     $ca = new Comment();
     $ca->parent_id = 0;
-    $ca->post_id = 2;
-    $ca->ip = "$_SERVER[REMOTE_ADDR]";
-    $ca->username = 'Somebody';
+    $ca->post_id = $post_id;
+    $ca->ip = $_SERVER['REMOTE_ADDR'];
+    $ca->username = 'Ipsum of Lorem';
     $ca->message = 'First message';
+    $ca->prepare();
 
     // Create second comment
     $cb = new Comment();
     $cb->parent_id = 1;
-    $cb->post_id = 2;
-    $cb->ip = "$_SERVER[REMOTE_ADDR]";
-    $cb->username = 'Somebody Else';
+    $cb->post_id = $post_id;
+    $cb->ip = $_SERVER['REMOTE_ADDR'];
+    $cb->username = 'Lorem of Ipsum';
     $cb->message = 'Reply to first message';
+    $cb->prepare();
 
     // Add the comments to the database
     $comments_db->add($ca);
     $comments_db->add($cb);
 
     // Get the tree-like thread array
-    $thread = $comments_db->fetch_thread($post_id=0);
+    $thread = $comments_db->fetch_thread($post_id);
     print_r($thread);
 ```
 

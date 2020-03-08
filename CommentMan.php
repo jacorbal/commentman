@@ -2,12 +2,15 @@
 /**
  * @file comments.php
  *
- * @date Sat 07 Mar 2020 15:08 UTC
- *
  * @brief Comments manager without using any public identification
  *        service, and storing & retrieving the data using SQLite3
  *
  * @author J. A. Corbal <jacorbal@gmail.com>
+ *
+ * @date Created: Sat 07 Mar 2020 15:08 UTC
+ * @date Updated: Sun 08 Mar 2020 15:18 UTC
+ *
+ * @version 0.1.1
  *
  * @copyright (c) 2020, J. A. Corbal
  *

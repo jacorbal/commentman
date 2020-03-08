@@ -2,11 +2,14 @@
 /**
  * @file Comment.php
  *
- * @date Sat 07 Mar 2020 15:08 UTC
- *
  * @brief Comments class, later too be used by `CommentMan`
  *
  * @author J. A. Corbal <jacorbal@gmail.com>
+ *
+ * @date Created: Sat 07 Mar 2020 15:08 UTC
+ * @date Updated: Sun 08 Mar 2020 15:18 UTC
+ *
+ * @version 0.1.1
  *
  * @copyright (c) 2020, J. A. Corbal
  *
@@ -48,13 +51,27 @@ class Comment {
     // Mutators
     public function __set($property, $value) {
         if (property_exists($this, $property)) {
-            $this->$property = $value;
+            $this->$property = trim($value);
         }
         return $this;
     }
 
 
     // Operations
+    /**
+     * @brief Prepare the comment before store in the dabase
+     *
+     * @detail Intended to sanitize the strings, allow or remove
+     *         specific HTML tags, entities, strip tags, optionally
+     *         strip or encode special characters, etc.
+     */
+    public function prepare() {
+        $this->username = strip_tags($this->message);
+        $this->message = strip_tags($this->message);
+        // more operations...
+     }
+
+
     /**
      * @brief Translate a @e Comment object into an array
      *
