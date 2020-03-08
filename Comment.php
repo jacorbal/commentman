@@ -66,8 +66,10 @@ class Comment {
      *         strip or encode special characters, etc.
      */
     public function prepare() {
-        $this->username = strip_tags($this->message);
-        $this->message = strip_tags($this->message);
+        $this->username = filter_var($this->username,
+            FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $this->message = filter_var($this->message,
+            FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         // more operations...
      }
 
