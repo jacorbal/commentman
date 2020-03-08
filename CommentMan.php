@@ -174,7 +174,7 @@ EOQ;
      * @note This is the only piece of code that takes input query
      *       values from outside the class, so there's the STMT
      *       (statement) method to prevent SQL injection, although
-     *       another test will be made from the PHP side when getting
+     *       another test should be made from the PHP side when getting
      *       the data, just in case.
      */
     public function add($comment_obj) {
@@ -327,7 +327,6 @@ EOQ;
         $comments = array();
         $query_res = $this->query($sql);
         while ($row = $query_res->fetchArray(SQLITE3_ASSOC)) {
-            $comment = new Comment();
             $comment = $this->fetch_by_id($row['id']);
             array_push($comments, $comment);
         }
